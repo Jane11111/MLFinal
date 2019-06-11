@@ -15,7 +15,7 @@ from Util import *
 from Bagging import Bagging
 
 if __name__=="__main__":
-    root = "~/Documents/数据集/sale/"
+    root = "D://Data/sale/"
     train_path = root + "train.csv"
     test_path = root + "test.csv"
     out_file=root+"result/result-random-forest.csv"
