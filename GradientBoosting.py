@@ -36,7 +36,7 @@ class GradientBoosting():
 
     def predict(self,dataset):
         res=np.full(shape=(len(dataset),),fill_value=self.model_list[0])
-        for i in range(self.n_estimators):
+        for i in np.arange(1,self.n_estimators+1,1):
             cur_predict_y=self.model_list[i].predict(dataset)
             res+=cur_predict_y*self.weight_list[i]
         return res
