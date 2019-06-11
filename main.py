@@ -17,7 +17,7 @@ if __name__=="__main__":
     root = "~/Documents/数据集/sale/"
     train_path = root + "train.csv"
     test_path = root + "test.csv"
-    out_file=root+"result/result-bagging.csv"
+    out_file=root+"result/result-sklearn-bagging.csv"
 
 
     train_dataset,train_label,test_dataset=LoadData(train_path,test_path)
@@ -29,9 +29,11 @@ if __name__=="__main__":
     # model=tree.DecisionTreeRegressor(random_state=1)
     # predict_y=model.fit(train_dataset,train_label).predict(test_dataset)
 
-    model=Bagging(20)
-    model.fit(train_dataset,train_label)
-    predict_y=model.predict(test_dataset)
+    # model=Bagging(20)
+    # model.fit(train_dataset,train_label)
+    # predict_y=model.predict(test_dataset)
+    model=BaggingRegressor(n_estimators=20)
+    predict_y=model.fit(train_dataset,train_label).predict(test_dataset)
 
 
 
