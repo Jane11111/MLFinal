@@ -7,5 +7,5 @@ import numpy as np
 
 a=np.full(shape=(3,),fill_value=10)
 b=np.full(shape=(3,),fill_value=2)
-c=a-b
+c=3*a
 print(c)
