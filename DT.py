@@ -28,17 +28,15 @@ class RT:
         是不是还存在着，把数据全都划到一边能够使得MSE变小？如果这样的话就是无限迭代了，需要避免该情况发生
         如果说不管怎么切分，都不会使得MSE变小，那么就直接不进行划分了，同样返回（None，value）
         """
-
         tree={}
         tree['feat']=feature
         tree['val']=value
         (left_dataset, left_label, right_dataset, right_label)=self.SplitData(dataset,label,feature,value)
-
         tree['left']=self.GenerateTree(left_dataset,left_label)
         tree['right']=self.GenerateTree(right_dataset,right_label)
         return tree
 
-    def ChooseBestSplit(self,dataset,label):
+    def ChooseBestSplit(self,dataset,label,candidate_fea=None):
 
         assert dataset is not None
 
@@ -49,8 +47,9 @@ class RT:
         if MSE==0:#所有的label都一样,可以结束了，不再划分
             return (None,mean_value)
 
-        fea_len=len(dataset[0])
-        for i in range(fea_len):
+        if candidate_fea is None:
+            candidate_fea=range(len(dataset[0]))
+        for i in candidate_fea:
             split_value=np.mean(dataset[:,i])
             (left_dataset, left_label, right_dataset, right_label) =self.SplitData(dataset,label,i,split_value)
             if left_dataset is None or right_dataset is None: #说明在该feature上，所有取值都一样
