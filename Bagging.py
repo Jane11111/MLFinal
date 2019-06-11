@@ -38,7 +38,7 @@ class Bagging:
     res_m 的每一行对应一个基学习器学到的结果
     """
     def merge(self,res_m):
-        res=np.mean(res_m,axis=1)
+        res=np.mean(res_m,axis=0)
         return res
 
 
