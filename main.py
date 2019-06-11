@@ -41,7 +41,7 @@ if __name__=="__main__":
     predict_y = model.predict(test_dataset)
 
 
-
+    #测试一下
 
 
     SaveFile(predict_y,out_file)
