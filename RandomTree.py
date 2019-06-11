@@ -9,6 +9,7 @@ from DT import RT
 
 class RandomTree(RT):
     def __init__(self,random_state=1):
+        super(RT,self).__init__()
         np.random.seed(random_state)
 
     def GenerateRandomTree(self,dataset,label,k="auto"):

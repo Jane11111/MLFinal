@@ -12,7 +12,7 @@ from Util import *
 class RandomForest(Bagging):
 
     def __init__(self,baselearner_num):
-        super.__init__(baselearner_num)
+        super(RandomForest,self).__init__(baselearner_num)
         pass
 
 
