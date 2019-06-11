@@ -103,7 +103,7 @@ class RT:
         for x in dataset:
             val=self.predict_singlevalue(x)
             labels.append(val)
-        return labels
+        return np.array(labels)
 
 
     def RecursivePredict(self,tree,x):
