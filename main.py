@@ -8,7 +8,7 @@ import pandas as pd
 from DT import RT
 from RF import RandomForest
 from sklearn import tree
-from sklearn.ensemble import BaggingRegressor,RandomForestRegressor
+from sklearn.ensemble import BaggingRegressor,RandomForestRegressor, GradientBoostingRegressor
 from GradientBoosting import GradientBoosting
 
 from Util import *
@@ -42,9 +42,12 @@ if __name__=="__main__":
     # model=RandomForestRegressor(n_estimators=20)
     # predict_y=model.fit(train_dataset,train_label).predict(test_dataset)
 
-    model=GradientBoosting(n_estimators=20)
-    model.fit(train_dataset,train_label)
-    predict_y=model.predict(test_dataset)
+    # model=GradientBoosting(n_estimators=20)
+    # model.fit(train_dataset,train_label)
+    # predict_y=model.predict(test_dataset)
+    model=GradientBoostingRegressor(n_estimators=20)
+    predict_y=model.fit(train_dataset,train_label).predict(test_dataset)
+
 
 
 
