@@ -5,12 +5,7 @@
 
 import numpy as np
 
-l1=np.array([[1],[1],[1]])
-l2=np.array([2,2,2])
-l2=l2[:,np.newaxis]
-
-l3=np.hstack((l1,l2,l2))
-l4=l3[:,:-1]
-l5=l3[:,-1]
-print(l4)
-print(l5)
+a=np.full(shape=(3,),fill_value=10)
+b=np.full(shape=(3,),fill_value=2)
+c=a-b
+print(c)
