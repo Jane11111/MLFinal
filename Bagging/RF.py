@@ -4,8 +4,8 @@
 # @FileName: RF.py
 
 from Bagging import Bagging
-from RandomTree import RandomTree
-from Util import *
+from Single.RandomTree import RandomTree
+from Tool.Util import *
 """
 实现随机森林方法
 """
@@ -13,7 +13,6 @@ class RandomForest(Bagging):
 
     def __init__(self,baselearner_num):
         super(RandomForest,self).__init__(baselearner_num)
-        pass
 
 
     def fit(self,dataset,label):

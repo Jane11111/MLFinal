@@ -3,8 +3,8 @@
 # @Author  : zxl
 # @FileName: Bagging.py
 
-from Util import *
-from DT import RT
+from Tool.Util import *
+from Single.DT import RT
 
 class Bagging:
 

@@ -5,7 +5,7 @@
 
 import random
 import numpy as np
-from DT import RT
+from Single.DT import RT
 
 class RandomTree(RT):
     def __init__(self,random_state=1):
