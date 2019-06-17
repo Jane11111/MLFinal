@@ -11,9 +11,10 @@ from Bagging.RF import RandomForest
 from Single.DT import RT
 from Single.MLP import MLP
 from Tool.Util import *
+from sklearn.preprocessing import MinMaxScaler
 
 if __name__=="__main__":
-    root = "D://Data/sale/"
+    root = "~/Documents/数据集/sale/"
     train_path = root + "train.csv"
     test_path = root + "test.csv"
     out_file=root+"result/result-mlp.csv"
@@ -50,9 +51,17 @@ if __name__=="__main__":
     # model.fit(train_dataset,train_label)
     # predict_y=model.predict(test_dataset)
 
-    model=MLP(hc=10,beth=0.01,epoch=100,h_activation=None,o_activation=None)
-    model.fit(train_dataset,train_label/100000)
-    predict_y=model.predict(test_dataset)*100000
+    model=MLP(hc=10,beth=0.01,epoch=50,h_activation="tanh",o_activation="tanh")
+    scaler = MinMaxScaler(feature_range=(0,1))
+    train_dataset=scaler.fit_transform(train_dataset)
+    m1=min(train_label)
+    m2=max(train_label)
+    train_label=(train_label-min(train_label))/(max(train_label)-min(train_label))
+    model.fit(train_dataset,train_label)
+    test_dataset=scaler.fit_transform(test_dataset)
+    predict_y=model.predict(test_dataset)
+    predict_y=predict_y*(m2-m1)+m1
+
 
 
     SaveFile(predict_y,out_file)
