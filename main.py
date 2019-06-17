@@ -5,6 +5,10 @@
 
 from sklearn.ensemble import GradientBoostingRegressor
 from Boosting.LAD_Boost import LAD_Boost
+from Boosting.GradientBoosting import GradientBoosting
+from Bagging.Bagging import Bagging
+from Bagging.RF import RandomForest
+from Single.DT import RT
 from Tool.Util import *
 
 if __name__=="__main__":
@@ -44,13 +48,6 @@ if __name__=="__main__":
     model=LAD_Boost(n_estimators=20)
     model.fit(train_dataset,train_label)
     predict_y=model.predict(test_dataset)
-
-
-
-
-
-
-
 
 
     SaveFile(predict_y,out_file)
