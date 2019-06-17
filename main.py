@@ -47,9 +47,6 @@ if __name__=="__main__":
 
 
 
-
-
-
     SaveFile(predict_y,out_file)
 
 
