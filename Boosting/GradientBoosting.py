@@ -10,7 +10,8 @@ from Boosting import Boosting
 
 class GradientBoosting(Boosting):
     def __init__(self,n_estimators=20):
-        super(GradientBoosting,self).__init__(n_estimators)
+        super().__init__(n_estimators)
+        # super(GradientBoosting,self).__init__(n_estimators)
 
     def update_y(self,dataset,label,last_y):
 

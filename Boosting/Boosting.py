@@ -13,7 +13,7 @@
 import numpy as np
 from Single.DT import RT
 
-class Boosting():
+class Boosting:
     def __init__(self,n_estimators=20):
         self.n_estimators=n_estimators
 

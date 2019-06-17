@@ -9,12 +9,12 @@
 
 import numpy as np
 from Single.DT import RT
-from Boosting import Boosting
+from Boosting.Boosting import Boosting
 
 class LAD_Boost(Boosting):
 
     def __init__(self, n_estimators=20):
-        super(LAD_Boost, self).__init__(n_estimators)
+        super().__init__(n_estimators)
 
     def update_y(self, dataset, label, last_y):
 
