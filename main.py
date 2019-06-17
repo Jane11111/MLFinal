@@ -9,6 +9,7 @@ from Boosting.GradientBoosting import GradientBoosting
 from Bagging.Bagging import Bagging
 from Bagging.RF import RandomForest
 from Single.DT import RT
+from Single.MLP import MLP
 from Tool.Util import *
 
 if __name__=="__main__":
@@ -45,7 +46,11 @@ if __name__=="__main__":
     # model=GradientBoostingRegressor(n_estimators=20)
     # predict_y=model.fit(train_dataset,train_label).predict(test_dataset)
 
-    model=LAD_Boost(n_estimators=20)
+    # model=LAD_Boost(n_estimators=20)
+    # model.fit(train_dataset,train_label)
+    # predict_y=model.predict(test_dataset)
+
+    model=MLP(hc=10,beth=0.01,h_activation=None,o_activation='sigmod')
     model.fit(train_dataset,train_label)
     predict_y=model.predict(test_dataset)
 
