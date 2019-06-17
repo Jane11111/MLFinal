@@ -7,6 +7,7 @@
 这个文件将boosting方法进行封装
 后面实现的，只需要调整一下 y还有w的更新函数就行了
 
+
 """
 
 import numpy as np
