@@ -8,7 +8,7 @@ from Boosting.LAD_Boost import LAD_Boost
 from Tool.Util import *
 
 if __name__=="__main__":
-    root = "~/Documents/数据集/sale/"
+    root = "D://Data/sale/"
     train_path = root + "train.csv"
     test_path = root + "test.csv"
     out_file=root+"result/result-ladboost.csv"
