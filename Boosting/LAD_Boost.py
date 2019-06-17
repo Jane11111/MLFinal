@@ -14,7 +14,7 @@ from Boosting import Boosting
 class LAD_Boost(Boosting):
 
     def __init__(self, n_estimators=20):
-        super(Boosting, self).__init__(n_estimators)
+        super(LAD_Boost, self).__init__(n_estimators)
 
     def update_y(self, dataset, label, last_y):
 
