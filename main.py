@@ -5,14 +5,17 @@
 
 from sklearn.ensemble import GradientBoostingRegressor
 from Boosting.LAD_Boost import LAD_Boost
+from Boosting.GradientBoosting import GradientBoosting
+from Bagging.Bagging import Bagging
+from Bagging.RF import RandomForest
+from Single.DT import RT
 from Tool.Util import *
 
 if __name__=="__main__":
     root = "D://Data/sale/"
     train_path = root + "train.csv"
     test_path = root + "test.csv"
-    out_file=root+"result/result-sklearn-ladboost.csv"
-
+    out_file=root+"result/result-ladboost.csv"
 
 
     train_dataset,train_label,test_dataset=LoadData(train_path,test_path)
@@ -42,12 +45,9 @@ if __name__=="__main__":
     # model=GradientBoostingRegressor(n_estimators=20)
     # predict_y=model.fit(train_dataset,train_label).predict(test_dataset)
 
-    # model=LAD_Boost(n_estimators=20)
-    # model.fit(train_dataset,train_label)
-    # predict_y=model.predict(test_dataset)
-
-    model = GradientBoostingRegressor(n_estimators=20,loss='lad')
-    predict_y=model.fit(train_dataset,train_label).predict(test_dataset)
+    model=LAD_Boost(n_estimators=20)
+    model.fit(train_dataset,train_label)
+    predict_y=model.predict(test_dataset)
 
 
     SaveFile(predict_y,out_file)
