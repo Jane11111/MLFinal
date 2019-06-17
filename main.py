@@ -3,22 +3,15 @@
 # @Author  : zxl
 # @FileName: main.py
 
-import numpy as np
-import pandas as pd
-from DT import RT
-from RF import RandomForest
-from sklearn import tree
-from sklearn.ensemble import BaggingRegressor,RandomForestRegressor, GradientBoostingRegressor
-from GradientBoosting import GradientBoosting
-
-from Util import *
-from Bagging import Bagging
+from sklearn.ensemble import GradientBoostingRegressor
+from Boosting.LAD_Boost import LAD_Boost
+from Tool.Util import *
 
 if __name__=="__main__":
     root = "~/Documents/数据集/sale/"
     train_path = root + "train.csv"
     test_path = root + "test.csv"
-    out_file=root+"result/result-sklearn-random-forest.csv"
+    out_file=root+"result/result-ladboost.csv"
 
 
     train_dataset,train_label,test_dataset=LoadData(train_path,test_path)
@@ -45,8 +38,12 @@ if __name__=="__main__":
     # model=GradientBoosting(n_estimators=20)
     # model.fit(train_dataset,train_label)
     # predict_y=model.predict(test_dataset)
-    model=GradientBoostingRegressor(n_estimators=20)
-    predict_y=model.fit(train_dataset,train_label).predict(test_dataset)
+    # model=GradientBoostingRegressor(n_estimators=20)
+    # predict_y=model.fit(train_dataset,train_label).predict(test_dataset)
+
+    model=LAD_Boost(n_estimators=20)
+    model.fit(train_dataset,train_label)
+    predict_y=model.predict(test_dataset)
 
 
 
