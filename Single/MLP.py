@@ -27,7 +27,7 @@ class MLP:
     """
     def fit(self,X,y):
         #这是两部分输入层的单元个数
-        self.i1=len(X[0][0])
+        self.i1=len(X[0])
         #TODO,以下的随机数都应该应该是以随机数填充
         Vc=np.random.random((self.i1,self.hc))
         W=np.random.random((self.hc,))#是个向量
@@ -47,15 +47,15 @@ class MLP:
             epoch-=1
             loss=0
             total=0
-            for i in range(X):
+            for i in range(len(X)):
                 real_y=y[i]
                 # 隐层输入
                 alpha_c = np.dot(X[i],Vc )
                 alpha=alpha_c
                 # 隐层输出
                 bc_vec = alpha_c - gama_c
-                for i in range(len(bc_vec)):
-                    bc_vec[i] = self.Activation(bc_vec[i], self.h_activation)
+                for j in range(len(bc_vec)):
+                    bc_vec[j] = self.Activation(bc_vec[j], self.h_activation)
 
                 h = bc_vec
                 # 输出层输入
@@ -73,14 +73,14 @@ class MLP:
 
                 gama_vec=gama_c
                 e_vec=g*W
-                for i in range(len(e_vec)):
-                    e_vec[i]=e_vec[i]*self.Derivation(alpha[i]-gama_vec[i],self.h_activation)
+                for j in range(len(e_vec)):
+                    e_vec[j]=e_vec[j]*self.Derivation(alpha[j]-gama_vec[j],self.h_activation)
 
-                delta_gama_c=-self.beth*e_vec[:self.hc]
+                delta_gama_c=-self.beth*e_vec
 
                 delta_Vc=np.full(shape=Vc.shape,fill_value=0,dtype=np.float32)
-                for i in range(len(delta_Vc)):
-                    delta_Vc[i]=X[i][i]*e_vec[:self.hc]#一行一行地求导
+                for j in range(len(delta_Vc)):
+                    delta_Vc[j]=X[i][j]*e_vec#一行一行地求导
                 delta_Vc*=self.beth
 
                 Vc+=delta_Vc
@@ -109,7 +109,7 @@ class MLP:
 
         h=bc_vec
         #输出层输入
-        beta=np.dot(self.W,h)
+        beta=np.dot(self.W,h)-self.theta
         #输出层输出
         res=self.Activation(beta,self.o_activation)
         return (h,res)
@@ -134,6 +134,8 @@ class MLP:
             res=y*(1-y)
         elif activation=="tanh":
             res=1-pow(np.tanh(c),2)
+        elif activation=="relu":
+            res=max(0,c)
         else:
             res=c
         return res
@@ -142,8 +144,13 @@ class MLP:
             res=1/(1+pow(np.e,-c))
         elif activation=="tanh":
             res=np.tanh(c)
+        elif activation=="relu":
+            if c<0:
+                res=0
+            else:
+                res=1
         else:
-            res=c
+            res=1
         return res
 
 

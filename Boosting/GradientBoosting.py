@@ -6,7 +6,7 @@
 
 import numpy as np
 from Single.DT import RT
-from Boosting import Boosting
+from Boosting.Boosting import Boosting
 
 class GradientBoosting(Boosting):
     def __init__(self,n_estimators=20):

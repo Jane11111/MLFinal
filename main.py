@@ -16,7 +16,7 @@ if __name__=="__main__":
     root = "D://Data/sale/"
     train_path = root + "train.csv"
     test_path = root + "test.csv"
-    out_file=root+"result/result-ladboost.csv"
+    out_file=root+"result/result-mlp.csv"
 
 
     train_dataset,train_label,test_dataset=LoadData(train_path,test_path)
@@ -50,9 +50,9 @@ if __name__=="__main__":
     # model.fit(train_dataset,train_label)
     # predict_y=model.predict(test_dataset)
 
-    model=MLP(hc=10,beth=0.01,h_activation=None,o_activation='sigmod')
-    model.fit(train_dataset,train_label)
-    predict_y=model.predict(test_dataset)
+    model=MLP(hc=10,beth=0.01,epoch=100,h_activation=None,o_activation=None)
+    model.fit(train_dataset,train_label/100000)
+    predict_y=model.predict(test_dataset)*100000
 
 
     SaveFile(predict_y,out_file)

@@ -3,7 +3,7 @@
 # @Author  : zxl
 # @FileName: RF.py
 
-from Bagging import Bagging
+from Bagging.Bagging import Bagging
 from Single.RandomTree import RandomTree
 from Tool.Util import *
 """
