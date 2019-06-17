@@ -18,18 +18,19 @@ class Boosting():
         self.n_estimators=n_estimators
 
     def update_y(self,dataset,label,last_y):
-        direction_y = last_y - label
-        model = RT()
-        model.fit(dataset, direction_y)
-          # 首先找到一个向梯度降低方向学习的model
-        cur_predict_y = model.predict(dataset)  # 是hm(x)
-
-        if np.sum(cur_predict_y) == 0:
-            weight = 0
-        else:
-            weight = np.sum(label - last_y) / np.sum(cur_predict_y)
-        last_y = last_y + weight * cur_predict_y
-        return model,last_y,weight
+        # direction_y = last_y - label
+        # model = RT()
+        # model.fit(dataset, direction_y)
+        #   # 首先找到一个向梯度降低方向学习的model
+        # cur_predict_y = model.predict(dataset)  # 是hm(x)
+        #
+        # if np.sum(cur_predict_y) == 0:
+        #     weight = 0
+        # else:
+        #     weight = np.sum(label - last_y) / np.sum(cur_predict_y)
+        # last_y = last_y + weight * cur_predict_y
+        # return model,last_y,weight
+        return None,None,None
 
 
     def fit(self,dataset,label):
