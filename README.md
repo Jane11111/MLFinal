@@ -7,9 +7,13 @@
 ## 算法
   
   回归树
+  
   多层感知机
+  
   bagging
+  
   随机森林
+  
   gradient boost（square loss lad loss）
 
 ## 实验结果
