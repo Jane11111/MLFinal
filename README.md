@@ -1,15 +1,14 @@
 # 机器学习课程期末项目
 
-## 数据集
-
-  https://www.kaggle.com/c/house-prices-advanced-regression-techniques/overview/description
-
-
 ## 任务
   
   给出一系列房子的特征，预测房子价格。
   
 ## 数据集
+
+### 地址
+
+https://www.kaggle.com/c/house-prices-advanced-regression-techniques/overview/description
 
 ### 预处理
 
