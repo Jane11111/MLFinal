@@ -3,9 +3,9 @@
 # @Author  : zxl
 # @FileName: test.py
 
-import numpy as np
+from datetime import datetime
 
-a=np.full(shape=(3,),fill_value=10)
-b=np.full(shape=(3,),fill_value=2)
-c=3*a
-print(c)
+s=datetime.now()
+e=datetime.now()
+
+print("pass: %d"%(e-s).seconds)

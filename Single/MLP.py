@@ -42,7 +42,7 @@ class MLP:
         """
         epoch=self.epoch
         while epoch>0:
-            print("epoch: %d"%(self.epoch-epoch))
+            #print("epoch: %d"%(self.epoch-epoch))
 
             epoch-=1
             loss=0
@@ -64,8 +64,8 @@ class MLP:
                 pred_y = self.Activation(beta-theta, self.o_activation)
 
 
-                loss+=pow(pred_y-real_y,2)
-                total+=1
+                #loss+=pow(pred_y-real_y,2)
+                #total+=1
 
                 g=(real_y-pred_y)*self.Derivation(beta-theta,self.o_activation)
                 delta_theta=-self.beth*g
@@ -91,8 +91,8 @@ class MLP:
                 W+=delta_W
                 theta+=delta_theta
                 gama_c+=delta_gama_c
-            loss/=(2*total)
-            print("loss: %f"%(loss))
+            #loss/=(2*total)
+            #print("loss: %f"%(loss))
 
         self.Vc=Vc
         self.W=W
