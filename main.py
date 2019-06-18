@@ -14,10 +14,10 @@ from Tool.Util import *
 from sklearn.preprocessing import MinMaxScaler
 
 if __name__=="__main__":
-    root = "~/Documents/数据集/sale/"
+    root = "D://Data/sale/"
     train_path = root + "train.csv"
     test_path = root + "test.csv"
-    out_file=root+"result/result-mlp.csv"
+    out_file=root+"result/result-mlp3.csv"
 
 
     train_dataset,train_label,test_dataset=LoadData(train_path,test_path)
@@ -51,7 +51,7 @@ if __name__=="__main__":
     # model.fit(train_dataset,train_label)
     # predict_y=model.predict(test_dataset)
 
-    model=MLP(hc=10,beth=0.01,epoch=50,h_activation="tanh",o_activation="tanh")
+    model=MLP(hc=5,beth=0.001,epoch=500,h_activation="None",o_activation="None")
     scaler = MinMaxScaler(feature_range=(0,1))
     train_dataset=scaler.fit_transform(train_dataset)
     m1=min(train_label)
