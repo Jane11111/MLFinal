@@ -73,6 +73,7 @@ class MLP:
 
                 gama_vec=gama_c
                 e_vec=g*W
+
                 for j in range(len(e_vec)):
                     e_vec[j]=e_vec[j]*self.Derivation(alpha[j]-gama_vec[j],self.h_activation)
 
