@@ -42,7 +42,7 @@ class MLP:
         """
         epoch=self.epoch
         while epoch>0:
-            print("epoch: %d"%(self.epoch-epoch))
+            #print("epoch: %d"%(self.epoch-epoch))
 
             epoch-=1
             loss=0
@@ -61,11 +61,11 @@ class MLP:
                 # 输出层输入
                 beta = np.dot(W, h)
                 # 输出层输出
-                pred_y = self.Activation(beta, self.o_activation)
+                pred_y = self.Activation(beta-theta, self.o_activation)
 
 
-                loss+=pow(pred_y-real_y,2)
-                total+=1
+                #loss+=pow(pred_y-real_y,2)
+                #total+=1
 
                 g=(real_y-pred_y)*self.Derivation(beta-theta,self.o_activation)
                 delta_theta=-self.beth*g
@@ -76,20 +76,23 @@ class MLP:
 
                 for j in range(len(e_vec)):
                     e_vec[j]=e_vec[j]*self.Derivation(alpha[j]-gama_vec[j],self.h_activation)
+                #print(e_vec)
 
                 delta_gama_c=-self.beth*e_vec
 
                 delta_Vc=np.full(shape=Vc.shape,fill_value=0,dtype=np.float32)
                 for j in range(len(delta_Vc)):
                     delta_Vc[j]=X[i][j]*e_vec#一行一行地求导
+
                 delta_Vc*=self.beth
 
                 Vc+=delta_Vc
+
                 W+=delta_W
                 theta+=delta_theta
                 gama_c+=delta_gama_c
-            loss/=(2*total)
-            print("loss: %f"%(loss))
+            #loss/=(2*total)
+            #print("loss: %f"%(loss))
 
         self.Vc=Vc
         self.W=W
@@ -136,9 +139,12 @@ class MLP:
         elif activation=="tanh":
             res=1-pow(np.tanh(c),2)
         elif activation=="relu":
-            res=max(0,c)
+            if c < 0:
+                res = 0
+            else:
+                res = 1
         else:
-            res=c
+            res=1
         return res
     def Activation(self,c,activation):
         if activation=="sigmod":
@@ -146,12 +152,9 @@ class MLP:
         elif activation=="tanh":
             res=np.tanh(c)
         elif activation=="relu":
-            if c<0:
-                res=0
-            else:
-                res=1
+            res=max(0,c)
         else:
-            res=1
+            res=c
         return res
 
 
